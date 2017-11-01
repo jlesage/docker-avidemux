@@ -15,11 +15,11 @@ from Jinja2 templates.
       <url>http://avidemux.org/</url>
     </project>
     <unraid>
-      <support_url>https://forums.lime-technology.com/topic/XXXXX-support-avidemux/</support_url>
+      <support_url>https://forums.lime-technology.com/topic/61112-support-avidemux/</support_url>
       <category>MediaApp:Video</category>
     </unraid>
     <container>
-      <rough_download_size>100MB</rough_download_size>
+      <rough_download_size>80MB</rough_download_size>
       <storage_permissions>rw</storage_permissions>
     </container>
     <!-- Extra stuff to be added to the documentation. -->
