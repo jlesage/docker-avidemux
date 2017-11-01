@@ -71,7 +71,7 @@ RUN \
     curl -# -L ${OPENCORE_AMR_URL} | tar xz && \
     curl -# -L ${TWOLAME_URL} | tar xz && \
     curl -# -L ${AFTEN_URL} | tar xj && \
-    curl -# -L --insecure ${LIBDCA_URL} | tar xj && \
+    curl -# -L ${LIBDCA_URL} | tar xj && \
     curl -# -L ${DCAENC_URL} | tar xz && \
 
     # Compile opencore-amr.
