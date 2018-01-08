@@ -128,7 +128,7 @@ docker stop avidemux
 ```
   3. Remove the container:
 ```
-docker stop avidemux
+docker rm avidemux
 ```
   4. Start the container using the `docker run` command.
 
