@@ -15,7 +15,7 @@ mkdir -p /config/xdg/config
 [ -f /config/.avidemux6/config3 ] || cp /defaults/config3 /config/.avidemux6/config3
 [ -f /config/xdg/config/QtProject.conf ] || cp /defaults/QtProject.conf /config/xdg/config/QtProject.conf
 
-# Take ownership of the config directory.
-chown -R $USER_ID:$GROUP_ID /config
+# Take ownership of the config directory content.
+chown -R $USER_ID:$GROUP_ID /config/*
 
 # vim: set ft=sh :
