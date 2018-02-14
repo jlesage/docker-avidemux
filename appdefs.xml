@@ -89,5 +89,7 @@ from Jinja2 templates.
     <ports/>
     <!-- Devices -->
     <devices/>
+    <!-- Extra parameters -->
+    <extra_params/>
   </container>
 </defs>
