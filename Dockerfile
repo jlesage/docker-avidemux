@@ -16,10 +16,10 @@ ARG LIBDCA_VERSION=0.0.5
 ARG DCAENC_VERSION=2
 
 # Define software download URLs.
-ARG AVIDEMUX_URL=https://downloads.sourceforge.net/project/avidemux/avidemux/${AVIDEMUX_VERSION}/avidemux_${AVIDEMUX_VERSION}.tar.gz
-ARG OPENCORE_AMR_URL=https://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-${OPENCORE_AMR_VERSION}.tar.gz
-ARG TWOLAME_URL=https://downloads.sourceforge.net/project/twolame/twolame/${TWOLAME_VERSION}/twolame-${TWOLAME_VERSION}.tar.gz
-ARG AFTEN_URL=https://downloads.sourceforge.net/project/aften/aften/${AFTEN_VERSION}/aften-${AFTEN_VERSION}.tar.bz2
+ARG AVIDEMUX_URL=https://superb-dca2.dl.sourceforge.net/project/avidemux/avidemux/${AVIDEMUX_VERSION}/avidemux_${AVIDEMUX_VERSION}.tar.gz
+ARG OPENCORE_AMR_URL=https://superb-dca2.dl.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-${OPENCORE_AMR_VERSION}.tar.gz
+ARG TWOLAME_URL=https://superb-dca2.dl.sourceforge.net/project/twolame/twolame/${TWOLAME_VERSION}/twolame-${TWOLAME_VERSION}.tar.gz
+ARG AFTEN_URL=https://superb-dca2.dl.sourceforge.net/project/aften/aften/${AFTEN_VERSION}/aften-${AFTEN_VERSION}.tar.bz2
 ARG LIBDCA_URL=https://download.videolan.org/pub/videolan/libdca/${LIBDCA_VERSION}/libdca-${LIBDCA_VERSION}.tar.bz2
 ARG DCAENC_URL=https://github.com/darealshinji/dcaenc/releases/download/v${DCAENC_VERSION}/dcaenc-${DCAENC_VERSION}.tar.gz
 
