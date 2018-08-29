@@ -15,7 +15,7 @@ from Jinja2 templates.
       <url>http://avidemux.org/</url>
     </project>
     <unraid>
-      <support_url>https://forums.lime-technology.com/topic/61112-support-avidemux/</support_url>
+      <support_url>https://forums.unraid.net/topic/61112-support-avidemux/</support_url>
       <category>MediaApp:Video</category>
     </unraid>
     <container>
