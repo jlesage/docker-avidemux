@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.6-v3.3.4
+FROM jlesage/baseimage-gui:alpine-3.8-v3.5.0
 
 # Define software versions.
 ARG AVIDEMUX_VERSION=2.7.0
