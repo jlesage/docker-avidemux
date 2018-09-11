@@ -22,6 +22,6 @@ mkdir -p /config/xdg/config
 [ -f /config/xdg/config/QtProject.conf ] || cp /defaults/QtProject.conf /config/xdg/config/QtProject.conf
 
 # Take ownership of the config directory content.
-chown -R $USER_ID:$GROUP_ID /config/*
+find /config -mindepth 1 -exec chown $USER_ID:$GROUP_ID {} \;
 
 # vim: set ft=sh :
