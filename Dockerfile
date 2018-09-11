@@ -209,6 +209,7 @@ RUN \
     env HOME=/tmp /usr/bin/avidemux3_cli --help > /dev/null && \
     mv /tmp/.avidemux6/config3 /defaults/ && \
     sed-patch 's|"language" : "",|"language" : "en",|' /defaults/config3 && \
+    sed-patch 's/"enabled" : true,/"enabled" : false,/' /defaults/config3 && \
     rm -r /tmp/.avidemux6
 
 # Generate and install favicons.
