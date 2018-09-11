@@ -179,7 +179,7 @@ RUN \
         /usr/bin/dcaenc \
         && \
     del-pkg build-dependencies fdk-aac-dev && \
-    rm -rf /tmp/*
+    rm -rf /tmp/* /tmp/.[!.]*
 
 # Install dependencies.
 RUN \
