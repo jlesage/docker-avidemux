@@ -21,7 +21,7 @@ ARG OPENCORE_AMR_URL=https://downloads.sourceforge.net/project/opencore-amr/open
 ARG TWOLAME_URL=https://downloads.sourceforge.net/project/twolame/twolame/${TWOLAME_VERSION}/twolame-${TWOLAME_VERSION}.tar.gz
 ARG AFTEN_URL=https://downloads.sourceforge.net/project/aften/aften/${AFTEN_VERSION}/aften-${AFTEN_VERSION}.tar.bz2
 ARG LIBDCA_URL=https://download.videolan.org/pub/videolan/libdca/${LIBDCA_VERSION}/libdca-${LIBDCA_VERSION}.tar.bz2
-ARG DCAENC_URL=https://github.com/darealshinji/dcaenc/releases/download/v${DCAENC_VERSION}/dcaenc-${DCAENC_VERSION}.tar.gz
+ARG DCAENC_URL=http://aepatrakov.narod.ru/olderfiles/1/dcaenc-${DCAENC_VERSION}.tar.gz
 
 # Define working directory.
 WORKDIR /tmp
