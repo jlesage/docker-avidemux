@@ -1,7 +1,7 @@
 # Docker container for Avidemux
 [![Docker Automated build](https://img.shields.io/docker/automated/jlesage/avidemux.svg)](https://hub.docker.com/r/jlesage/avidemux/) [![Docker Image](https://images.microbadger.com/badges/image/jlesage/avidemux.svg)](http://microbadger.com/#/images/jlesage/avidemux) [![Build Status](https://travis-ci.org/jlesage/docker-avidemux.svg?branch=master)](https://travis-ci.org/jlesage/docker-avidemux) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg)](https://github.com/jlesage/docker-avidemux/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
-This is a Docker container for Avidemux.
+This is a Docker container for [Avidemux](http://avidemux.org/).
 
 The GUI of the application is accessed through a modern web browser (no installation or configuration needed on client side) or via any VNC client.
 
