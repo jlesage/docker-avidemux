@@ -11,7 +11,7 @@ FROM jlesage/baseimage-gui:alpine-3.12-v3.5.5
 ARG DOCKER_IMAGE_VERSION=unknown
 
 # Define software versions.
-ARG AVIDEMUX_VERSION=2.7.4
+ARG AVIDEMUX_VERSION=2.7.6
 ARG OPENCORE_AMR_VERSION=0.1.5
 ARG TWOLAME_VERSION=0.3.13
 ARG AFTEN_VERSION=0.0.8
@@ -31,7 +31,6 @@ WORKDIR /tmp
 
 # Compile Avidemux
 RUN \
-    echo '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
     add-pkg --virtual build-dependencies \
         curl \
         build-base \
@@ -64,9 +63,7 @@ RUN \
         alsa-lib-dev \
         lame-dev \
         opus-dev \
-        && \
-    add-pkg \
-        fdk-aac-dev@testing \
+        fdk-aac-dev \
         && \
     # Download sources.
     echo 'Downloading sources...' && \
@@ -203,7 +200,8 @@ RUN \
          x265 \
          xvidcore \
          fribidi \
-         fdk-aac@testing \
+         fdk-aac \
+         libvpx \
          && \
     ln -s libvdpau.so.1 /usr/lib/libvdpau.so
 
