@@ -65,6 +65,11 @@ RUN \
         opus-dev \
         fdk-aac-dev \
         && \
+    # Set same default compilation flags as abuild.
+    export CFLAGS="-Os -fomit-frame-pointer" && \
+    export CXXFLAGS="$CFLAGS" && \
+    export CPPFLAGS="$CFLAGS" && \
+    export LDFLAGS="-Wl,--as-needed" && \
     # Download sources.
     echo 'Downloading sources...' && \
     curl -# -L ${AVIDEMUX_URL} | tar xz && \
@@ -73,7 +78,6 @@ RUN \
     curl -# -L ${AFTEN_URL} | tar xj && \
     curl -# -L ${LIBDCA_URL} | tar xj && \
     curl -# -L ${DCAENC_URL} | tar xz && \
-
     # Compile opencore-amr.
     echo 'Compiling opencore-amr...' && \
     cd opencore-amr-${OPENCORE_AMR_VERSION} && \
@@ -83,7 +87,6 @@ RUN \
         && \
     make install && \
     cd .. && \
-
     # Compile twolame.
     echo 'Compiling twolame...' && \
     cd twolame-${TWOLAME_VERSION} && \
@@ -94,7 +97,6 @@ RUN \
         && \
     make install && \
     cd .. && \
-
     # Compile aften.
     echo 'Compiling aften...' && \
     cd aften-${AFTEN_VERSION} && \
@@ -104,7 +106,6 @@ RUN \
     make install && \
     cd .. && \
     cd .. && \
-
     # Compile libdca.
     echo 'Compiling libdca...' && \
     cd libdca-${LIBDCA_VERSION} && \
@@ -115,7 +116,6 @@ RUN \
         && \
     make install && \
     cd .. && \
-
     # Compile dcaenc.
     echo 'Compiling dcaenc...' && \
     cd dcaenc-${DCAENC_VERSION} && \
@@ -126,7 +126,6 @@ RUN \
         && \
     make install && \
     cd .. && \
-
     # Patch avidemux source.
     echo 'Patching avidemux...' && \
     sed-patch 's|#ifndef __APPLE__|#if 0 //#ifndef __APPLE__|' avidemux_${AVIDEMUX_VERSION}/avidemux/common/main.cpp && \
@@ -137,13 +136,11 @@ RUN \
     sed-patch 's|canonicalize_file_name(in.c_str())|realpath(in.c_str(), NULL)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/ADM_folder_linux.cpp && \
     sed-patch 's|^\(END\)\?IF (NOT APPLE)|#\1IF (NOT APPLE)|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
     sed-patch 's|SET(ADM_core_SRCS \(.*\) ADM_memcpy.cpp|#SET(ADM_core_SRCS \1 ADM_memcpy.cpp|' avidemux_${AVIDEMUX_VERSION}/avidemux_core/ADM_core/src/CMakeLists.txt && \
-
     # Compile avidemux.
     echo 'Compiling avidemux...' && \
     cd avidemux_${AVIDEMUX_VERSION} && \
     chmod +x bootStrap.bash && \
     ./bootStrap.bash && \
-
     # Install avidemux.
     echo 'Installing avidemux...' && \
     rm -r install/usr/include && \
@@ -151,7 +148,6 @@ RUN \
     find install/usr/lib -type f -exec strip {} ';' && \
     cp -Rv install/usr/* /usr/ && \
     cd ..  && \
-
     # Cleanup.
     rm -r \
         /usr/include/opencore-amr* \
