@@ -1,5 +1,5 @@
 # Docker container for Avidemux
-[![Docker Image Size](https://img.shields.io/microbadger/image-size/jlesage/avidemux)](http://microbadger.com/#/images/jlesage/avidemux) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-avidemux/status.svg)](https://drone.le-sage.com/jlesage/docker-avidemux) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg)](https://github.com/jlesage/docker-avidemux/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
+[![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/avidemux/latest)](https://hub.docker.com/r/jlesage/avidemux/tags) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-avidemux/status.svg)](https://drone.le-sage.com/jlesage/docker-avidemux) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg)](https://github.com/jlesage/docker-avidemux/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
 This is a Docker container for [Avidemux](http://avidemux.org/).
 
