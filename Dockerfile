@@ -42,6 +42,9 @@ RUN \
         cmake \
         yasm \
         nasm \
+        autoconf \
+        automake \
+        libtool \
         qt5-qtbase \
         qt5-qttools-dev \
         zlib-dev \
@@ -109,6 +112,7 @@ RUN \
     # Compile libdca.
     echo 'Compiling libdca...' && \
     cd libdca-${LIBDCA_VERSION} && \
+    ./bootstrap && \
     ./configure \
         --prefix=/usr \
         --disable-static \
