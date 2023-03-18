@@ -1,0 +1,25 @@
+{
+	"version" : {
+		"apiVersion" : 1
+	},
+	"update" : {
+		"enabled" : false,
+		"lastCheck" : 0
+	},
+	"lastfiles" : {
+		"lastdir_read" : "\/storage\/dummy.mkv",
+		"lastdir_write" : "\/storage\/dummy.mkv",
+		"file1" : "",
+		"file2" : "",
+		"file3" : "",
+		"file4" : ""
+	},
+	"lastprojects" : {
+		"lastdir_read" : "",
+		"lastdir_write" : "",
+		"file1" : "",
+		"file2" : "",
+		"file3" : "",
+		"file4" : ""
+	},
+}

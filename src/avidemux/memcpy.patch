@@ -1,0 +1,56 @@
+--- a/avidemux/common/main.cpp	2023-03-17 19:12:50.363061652 -0400
++++ b/avidemux/common/main.cpp	2023-03-17 19:13:23.653146936 -0400
+@@ -270,7 +270,7 @@
+             printf("%d: %s\n", i, argv[i]);
+     }
+ 
+-#ifndef __APPLE__
++#if !defined(__APPLE__) && !defined(__MUSL__)
+     ADM_InitMemcpy();
+ #endif
+     printf("\nInitialising prefs\n");
+--- a/avidemux_core/ADM_core/include/ADM_assert.h	2023-03-17 19:17:11.397507276 -0400
++++ b/avidemux_core/ADM_core/include/ADM_assert.h	2023-03-17 19:17:34.375229322 -0400
+@@ -61,7 +61,7 @@
+ /* */
+ ADM_CORE6_EXPORT void            ADM_usleep(unsigned long us);
+ 
+-#ifndef __APPLE__
++#if !defined(__APPLE__) && !defined(__MUSL__)
+   typedef void *(* adm_fast_memcpy)(void *to, const void *from, size_t len);
+   extern ADM_CORE6_EXPORT adm_fast_memcpy myAdmMemcpy;
+ #endif
+@@ -69,7 +69,7 @@
+ 
+ #define ADM_dealloc(x) ADM_dezalloc( (void *)x)
+ 
+-#ifndef __APPLE__
++#if !defined(__APPLE__) && !defined(__MUSL__)
+   #define memcpy myAdmMemcpy
+ #endif
+ 
+--- a/avidemux_core/ADM_core/src/CMakeLists.txt	2023-03-17 19:18:25.028661169 -0400
++++ b/avidemux_core/ADM_core/src/CMakeLists.txt	2023-03-17 19:18:46.721839714 -0400
+@@ -19,11 +19,6 @@
+ 	SET(ADM_core_SRCS ${ADM_core_SRCS} ADM_crashdump_other.cpp ADM_folder_linux.cpp) # Default
+ ENDIF (MINGW)
+ 
+-
+-IF (NOT APPLE)
+-	SET(ADM_core_SRCS ${ADM_core_SRCS} ADM_memcpy.cpp)
+-ENDIF (NOT APPLE)
+-
+ if (ADM_DEBUG AND FIND_LEAKS)
+ 	set(ADM_core_SRCS ${ADM_core_SRCS} ADM_nvwa/debug_new.cpp)
+ 
+--- a/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp	2023-03-17 19:35:50.046816161 -0400
++++ b/avidemux/qt4/ADM_jobs/src/ADM_jobs.cpp	2023-03-17 19:36:08.302540294 -0400
+@@ -102,7 +102,7 @@
+ 
+ 	
+ 	
+-#ifndef __APPLE__
++#if !defined(__APPLE__) && !defined(__MUSL__)
+     ADM_InitMemcpy();
+ #endif
+ 	atexit(onexit);
