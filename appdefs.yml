@@ -24,6 +24,15 @@ app:
     category: "MediaApp:Video"
   documentation:
   changelog:
+    - version: 23.03.1
+      date: 2023-03-18
+      changes:
+        - 'Updated Avidemux to version 2.8.1.'
+        - 'Versioning scheme of the Docker image changed to `YY.MM.SEQUENCE`.'
+        - 'Update of the baseimage to version 4.4.0 brings the following new features:'
+        - '2:Support for dark mode.'
+        - '2:Support for remote window resize.'
+        - '2:Updated the web UI with a new, simplified and less intrusive look.'
     - version: 1.4.0
       date: 2021-04-14
       changes:
