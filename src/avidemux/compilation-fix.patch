@@ -1,0 +1,25 @@
+--- a/avidemux_plugins/ADM_muxers/muxerMp4/muxerMP4Config.cpp	2023-03-17 18:46:34.640361599 -0400
++++ b/avidemux_plugins/ADM_muxers/muxerMp4/muxerMP4Config.cpp	2023-03-17 18:46:58.414420581 -0400
+@@ -34,7 +34,7 @@
+         bool force   = muxerConfig.forceAspectRatio;
+ 
+ #ifndef MUXER_IS_MOV
+-        diaMenuEntry format[]={{MP4_MUXER_MP4,"MP4"},{MP4_MUXER_PSP,"PSP"},NULL};
++        diaMenuEntry format[]={{MP4_MUXER_MP4,"MP4",NULL},{MP4_MUXER_PSP,"PSP",NULL}};
+         diaElemMenu  menuFormat(&fmt,QT_TRANSLATE_NOOP("mp4muxer","Muxing Format"),2,format,"");
+         diaMenuEntry streamOpt[]={
+             {MP4_MUXER_OPT_NONE,QT_TRANSLATE_NOOP("mp4muxer","No optimization"),NULL},
+--- a/avidemux_core/ADM_core/src/ADM_folder_linux.cpp	2023-03-17 21:54:06.337038569 -0400
++++ b/avidemux_core/ADM_core/src/ADM_folder_linux.cpp	2023-03-17 21:55:02.428771401 -0400
+@@ -39,7 +39,11 @@
+ static std::string canonize(const std::string &in)
+ {
+     std::string out;
++#ifdef __MUSL__
++    char *simple2=realpath(in.c_str(), NULL);
++#else
+     char *simple2=canonicalize_file_name(in.c_str());
++#endif
+     if(simple2)
+     {
+         out=std::string(simple2);
