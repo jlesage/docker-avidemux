@@ -1,5 +1,10 @@
 # Docker container for Avidemux
-[![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/avidemux/latest)](https://hub.docker.com/r/jlesage/avidemux/tags) [![Build Status](https://github.com/jlesage/docker-avidemux/actions/workflows/build-image.yml/badge.svg?branch=master)](https://github.com/jlesage/docker-avidemux/actions/workflows/build-image.yml) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg)](https://github.com/jlesage/docker-avidemux/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage)
+[![Release](https://img.shields.io/github/release/jlesage/docker-avidemux.svg?logo=github&style=for-the-badge)](https://github.com/jlesage/docker-avidemux/releases/latest)
+[![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/avidemux/latest?logo=docker&style=for-the-badge)](https://hub.docker.com/r/jlesage/avidemux/tags)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jlesage/avidemux?label=Pulls&logo=docker&style=for-the-badge)](https://hub.docker.com/r/jlesage/avidemux)
+[![Docker Stars](https://img.shields.io/docker/stars/jlesage/avidemux?label=Stars&logo=docker&style=for-the-badge)](https://hub.docker.com/r/jlesage/avidemux)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/jlesage/docker-avidemux/build-image.yml?logo=github&branch=master&style=for-the-badge)](https://github.com/jlesage/docker-avidemux/actions/workflows/build-image.yml)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=for-the-badge)](https://paypal.me/JocelynLeSage)
 
 This project implements a Docker container for [Avidemux](https://avidemux.org).
 
