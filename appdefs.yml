@@ -12,6 +12,7 @@ app:
   name: avidemux
   friendly_name: Avidemux
   gui_type: x11
+  base_os: alpine
   project:
     description: |-
       Avidemux is a free video editor designed for simple cutting, filtering and encoding
