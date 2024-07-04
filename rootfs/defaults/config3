@@ -22,4 +22,8 @@
 		"file3" : "",
 		"file4" : ""
 	},
+	"audio_device" : {
+		"audiodevice" : "PulseAudio",
+		"alsa_device" : "dmix"
+	},
 }

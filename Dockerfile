@@ -79,7 +79,8 @@ RUN \
         fribidi \
         fdk-aac \
         libvpx \
-        font-croscore
+        font-croscore \
+        libpulse
 
 # Generate and install favicons.
 RUN \

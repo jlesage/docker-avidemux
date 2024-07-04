@@ -104,6 +104,7 @@ xx-apk --no-cache --no-scripts add \
     fdk-aac-dev \
     libva-dev \
     ffmpeg4-dev \
+    pulseaudio-dev \
 
 #
 # Download sources.
