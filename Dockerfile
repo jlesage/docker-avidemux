@@ -95,7 +95,7 @@ COPY --from=avidemux /tmp/avidemux-install/usr/share/avidemux6 /usr/share/avidem
 # Set internal environment variables.
 RUN \
     set-cont-env APP_NAME "Avidemux" && \
-    set-cont-env APP_VERSION "$AVIDEMUX" && \
+    set-cont-env APP_VERSION "$AVIDEMUX_VERSION" && \
     set-cont-env DOCKER_IMAGE_VERSION "$DOCKER_IMAGE_VERSION" && \
     true
 
