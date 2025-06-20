@@ -32,8 +32,8 @@ queue and powerful scripting capabilities.
       * [Data Volumes](#data-volumes)
       * [Ports](#ports)
       * [Changing Parameters of a Running Container](#changing-parameters-of-a-running-container)
-   * [Docker Compose File](#docker-compose-file)
-   * [Docker Image Versioning](#docker-image-versioning)
+      * [Docker Compose File](#docker-compose-file)
+   * [Docker Image Versioning and Tags](#docker-image-versioning-and-tags)
    * [Docker Image Update](#docker-image-update)
       * [Synology](#synology)
       * [unRAID](#unraid)
@@ -220,8 +220,7 @@ docker rm avidemux
 > application resumes with the same state, provided the `/config` folder
 > mapping remains unchanged.
 
-## Docker Compose File
-
+### Docker Compose File
 
 Below is an example `docker-compose.yml` file for use with
 [Docker Compose](https://docs.docker.com/compose/overview/).
@@ -241,10 +240,11 @@ services:
       - "/home/user:/storage:rw"
 ```
 
-## Docker Image Versioning
+## Docker Image Versioning and Tags
 
-Each release of a Docker image is versioned. Before October 2022, the versioning
-scheme followed [semantic versioning](https://semver.org).
+Each release of a Docker image is versioned, and each version as its own image
+tag. Before October 2022, the versioning scheme followed
+[semantic versioning](https://semver.org).
 
 Since then, the versioning scheme has shifted to
 [calendar versioning](https://calver.org) with the format `YY.MM.SEQUENCE`,
@@ -253,6 +253,12 @@ where:
   - `MM` is the zero-padded month.
   - `SEQUENCE` is the incremental release number within the month (first release
     is 1, second is 2, etc).
+
+View all available tags on [Docker Hub] or check the [Releases] page for version
+details.
+
+[Releases]: https://github.com/jlesage/docker-avidemux/releases
+[Docker Hub]: https://hub.docker.com/r/jlesage/avidemux/tags
 
 ## Docker Image Update
 
