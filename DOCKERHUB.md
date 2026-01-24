@@ -12,7 +12,8 @@ This is a Docker container for [Avidemux](https://avidemux.org).
 The graphical user interface (GUI) of the application can be accessed through a
 modern web browser, requiring no installation or configuration on the client
 
-> This Docker container is entirely unofficial and not made by the creators of Avidemux.
+> This Docker container is entirely unofficial and not made by the creators of
+> Avidemux.
 
 ---
 
