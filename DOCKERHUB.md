@@ -20,8 +20,8 @@ modern web browser, requiring no installation or configuration on the client
 [![Avidemux logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/avidemux-icon.png&w=110)](https://avidemux.org)[![Avidemux](https://images.placeholders.dev/?width=256&height=110&fontFamily=monospace&fontWeight=400&fontSize=52&text=Avidemux&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://avidemux.org)
 
 Avidemux is a free video editor designed for simple cutting, filtering and encoding
-tasks.  It supports many file types, including AVI, DVD compatible MPEG files, MP4
-and ASF, using a variety of codecs.  Tasks can be automated using projects, job
+tasks. It supports many file types, including AVI, DVD compatible MPEG files, MP4
+and ASF, using a variety of codecs. Tasks can be automated using projects, job
 queue and powerful scripting capabilities.
 
 ---
