@@ -4,7 +4,7 @@ set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error.
 
 # Set same default compilation flags as abuild.
-export CFLAGS="-fomit-frame-pointer -fPIC -D__MUSL__"
+export CFLAGS="-fomit-frame-pointer -fPIC -D__MUSL__ -Wno-implicit-function-declaration"
 export CXXFLAGS="$CFLAGS -Wno-narrowing -Wno-reserved-user-defined-literal"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,--strip-all -Wl,--as-needed"
@@ -82,6 +82,7 @@ xx-apk --no-cache --no-scripts add \
     g++ \
     file \
     qt5-qtbase \
+    qt5-qtbase-dev \
     qt5-qttools-dev \
     zlib-dev \
     libxv-dev \

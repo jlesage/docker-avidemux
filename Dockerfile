@@ -27,7 +27,7 @@ ARG DCAENC_URL=https://gitlab.com/patrakov/dcaenc/-/archive/v${DCAENC_VERSION}/d
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 # Build Avidemux.
-FROM --platform=$BUILDPLATFORM alpine:3.16 AS avidemux
+FROM --platform=$BUILDPLATFORM alpine:3.20 AS avidemux
 ARG TARGETPLATFORM
 ARG AVIDEMUX_URL
 ARG OPENCORE_AMR_URL
@@ -50,7 +50,7 @@ RUN xx-verify \
     /usr/bin/avidemux3_cli
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.16-v4.11.3
+FROM jlesage/baseimage-gui:alpine-3.20-v4.11.3
 
 ARG AVIDEMUX_VERSION
 ARG DOCKER_IMAGE_VERSION
