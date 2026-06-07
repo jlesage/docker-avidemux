@@ -50,7 +50,7 @@ RUN xx-verify \
     /usr/bin/avidemux3_cli
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.20-v4.12.3
+FROM jlesage/baseimage-gui:alpine-3.20-v4.12.4
 
 ARG AVIDEMUX_VERSION
 ARG DOCKER_IMAGE_VERSION
