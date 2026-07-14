@@ -1,0 +1,102 @@
+diff -Naru avidemux_2.8.1.orig/avidemux/cli/ADM_userInterfaces/ui_support.cpp avidemux_2.8.1/avidemux/cli/ADM_userInterfaces/ui_support.cpp
+--- a/avidemux/cli/ADM_userInterfaces/ui_support.cpp	2022-09-17 13:59:16.000000000 +0000
++++ b/avidemux/cli/ADM_userInterfaces/ui_support.cpp	2026-07-14 12:22:57.455148529 +0000
+@@ -52,3 +52,4 @@
+ 
+ void GUI_OpenApplicationLog() { }
+ void GUI_OpenApplicationDataFolder() { }
++void GUI_OpenJobsQueue() { }
+diff -Naru avidemux_2.8.1.orig/avidemux/common/ADM_commonUI/myOwnMenu.h avidemux_2.8.1/avidemux/common/ADM_commonUI/myOwnMenu.h
+--- a/avidemux/common/ADM_commonUI/myOwnMenu.h	2022-09-17 13:59:16.000000000 +0000
++++ b/avidemux/common/ADM_commonUI/myOwnMenu.h	2026-07-14 12:22:57.389166927 +0000
+@@ -37,6 +37,7 @@
+             {MENU_ACTION,QT_TRANSLATE_NOOP("adm","Append"),             NULL,ACT_APPEND_VIDEO,  NULL,"Ctrl+A",0},
+             {MENU_ACTION,QT_TRANSLATE_NOOP("adm","Save"),               NULL,ACT_SAVE_VIDEO,    MKICON(filesave),"Ctrl+S",0},
+             {MENU_ACTION,QT_TRANSLATE_NOOP("adm","Queue"),              NULL,ACT_SAVE_QUEUE,    NULL,"Ctrl+U",0},
++            {MENU_ACTION,QT_TRANSLATE_NOOP("adm","Open Queue"),         NULL,ACT_OPEN_QUEUE,    NULL,NULL,0},
+             {MENU_SUBMENU,QT_TRANSLATE_NOOP("adm","Save as Image"),     NULL,ACT_DUMMY,         NULL,NULL,0},
+             {MENU_SUBACTION,QT_TRANSLATE_NOOP("adm","Save as BMP"),     NULL,ACT_SAVE_BMP,      NULL,"Ctrl+M",0},
+             {MENU_SUBACTION,QT_TRANSLATE_NOOP("adm","Save as PNG"),     NULL,ACT_SAVE_PNG,      NULL,"Ctrl+P",0},
+diff -Naru avidemux_2.8.1.orig/avidemux/common/gui_action.names avidemux_2.8.1/avidemux/common/gui_action.names
+--- a/avidemux/common/gui_action.names	2022-09-17 13:59:17.000000000 +0000
++++ b/avidemux/common/gui_action.names	2026-07-14 12:22:57.386538661 +0000
+@@ -139,3 +139,5 @@
+ //
+ ACT(SaveAsDefault)
+ ACT(LoadDefault)
++//
++ACT(OPEN_QUEUE)
+diff -Naru avidemux_2.8.1.orig/avidemux/common/gui_main.cpp avidemux_2.8.1/avidemux/common/gui_main.cpp
+--- a/avidemux/common/gui_main.cpp	2022-09-17 13:59:17.000000000 +0000
++++ b/avidemux/common/gui_main.cpp	2026-07-14 12:22:57.414388723 +0000
+@@ -95,6 +95,7 @@
+ 
+ extern void GUI_OpenApplicationLog();
+ extern void GUI_OpenApplicationDataFolder();
++extern void GUI_OpenJobsQueue();
+ 
+ //extern bool ADM_mux_configure(int index);
+ void brokenAct(void);
+@@ -364,6 +365,9 @@
+         if(playing) break;
+         A_checkSavedSession(true);
+         return;
++    case ACT_OPEN_QUEUE:
++        GUI_OpenJobsQueue();
++        return;
+     default:
+       break;
+ 
+diff -Naru avidemux_2.8.1.orig/avidemux/gtk/ADM_userInterfaces/ui_support.cpp avidemux_2.8.1/avidemux/gtk/ADM_userInterfaces/ui_support.cpp
+--- a/avidemux/gtk/ADM_userInterfaces/ui_support.cpp	2022-09-17 13:59:17.000000000 +0000
++++ b/avidemux/gtk/ADM_userInterfaces/ui_support.cpp	2026-07-14 12:22:57.456978129 +0000
+@@ -70,3 +70,4 @@
+ 
+ void GUI_OpenApplicationLog() { }
+ void GUI_OpenApplicationDataFolder() { }
++void GUI_OpenJobsQueue() { }
+diff -Naru avidemux_2.8.1.orig/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp avidemux_2.8.1/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp
+--- a/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp	2022-09-17 13:59:17.000000000 +0000
++++ b/avidemux/qt4/ADM_userInterfaces/ADM_gui/Q_gui2.cpp	2026-07-14 12:22:57.487443678 +0000
+@@ -1216,6 +1216,7 @@
+ #define PUSH_ALWAYS_AVAILABLE(menu,event) { QAction *a = findAction(&myMenu ##menu, event); if(a) ActionsAlwaysAvailable.push_back(a); }
+ 
+     PUSH_ALWAYS_AVAILABLE(File, ACT_OPEN_VIDEO)
++    PUSH_ALWAYS_AVAILABLE(File, ACT_OPEN_QUEUE)
+     PUSH_ALWAYS_AVAILABLE(File, ACT_AVS_PROXY)
+     PUSH_ALWAYS_AVAILABLE(File, ACT_EXIT)
+ 
+diff -Naru avidemux_2.8.1.orig/avidemux/qt4/ADM_userInterfaces/ui_support.cpp avidemux_2.8.1/avidemux/qt4/ADM_userInterfaces/ui_support.cpp
+--- a/avidemux/qt4/ADM_userInterfaces/ui_support.cpp	2022-09-17 13:59:17.000000000 +0000
++++ b/avidemux/qt4/ADM_userInterfaces/ui_support.cpp	2026-07-14 12:22:57.447982050 +0000
+@@ -1,6 +1,8 @@
+ #include <stdio.h>
+ #include <QtCore/QUrl>
+ #include <QDesktopServices>
++#include <QProcess>
++#include <QCoreApplication>
+ #include <QWidget>
+ #include <QtCore/QString>
+ #ifdef _WIN32
+@@ -106,3 +108,21 @@
+ #endif
+     QDesktopServices::openUrl(QUrl::fromLocalFile(baseDir));
+ }
++
++void GUI_OpenJobsQueue()
++{
++#if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
++    const char *jobsBin = "avidemux3_jobs_qt6";
++#elif QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++    const char *jobsBin = "avidemux3_jobs_qt5";
++#else
++    const char *jobsBin = "avidemux3_jobs_qt4";
++#endif
++    QString program = QCoreApplication::applicationDirPath() + QString("/") + QString(jobsBin);
++    if(!QProcess::startDetached(program))
++    {
++        // Fall back to PATH lookup.
++        if(!QProcess::startDetached(QString(jobsBin)))
++            ADM_error("Failed to start jobs manager (%s)\n", jobsBin);
++    }
++}

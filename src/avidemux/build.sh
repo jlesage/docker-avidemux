@@ -239,6 +239,7 @@ patch -p1 -d /tmp/avidemux < "$SCRIPT_DIR"/build-log.patch
 patch -p1 -d /tmp/avidemux < "$SCRIPT_DIR"/compilation-fix.patch
 patch -p1 -d /tmp/avidemux < "$SCRIPT_DIR"/crashdump.patch
 patch -p1 -d /tmp/avidemux < "$SCRIPT_DIR"/memcpy.patch
+patch -p1 -d /tmp/avidemux < "$SCRIPT_DIR"/open_queue.patch
 
 log "Compiling Avidemux..."
 (
